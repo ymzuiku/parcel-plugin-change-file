@@ -1,21 +1,21 @@
 # parcel-plugin-change-file
 
+## :bulb: How ignore parcel bundler file ?
+
 On Parcel build end, change index.html context, and copy static files in outDir
 
-## Install
+## :building_construction: Install
 
 ```sh
 $ yarn add -D parcel-plugin-change-file
 ```
 
-## :robot: Create parcel-plugin-change-file.js file
+## :pencil2: Create parcel-plugin-change-file.js file
 
 ```
-// in project-root-dir
-module.exports = {
-  html: `
-    <h1>hello change</h1>
-  `,
+// in project-dir
+module.exports = {
+  html: ['<link rel="manifest" href="manifest.webmanifest">'],
   copy: ['src/assets'],
 };
 ```
@@ -31,3 +31,7 @@ Add `<!-- parcel-plugin-change-file -->` in index.html
 ```
 
 ## :beer: OK, after build, we change static html and files!
+
+File tree like this:
+
+![](.imgs/2018-07-22-00-27-46.png)

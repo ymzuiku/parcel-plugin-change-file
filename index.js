@@ -7,10 +7,10 @@ const config = require(path.resolve(
 
 function changeHtml(filePath, data = '') {
   if (config && config.html && config.html.length > 0) {
-    for (let i = 0, l = config.html.length; i < l; i++) {
+    for (let i = 0, l = config.html.length; i <=l; i++) {
       data = data.replace(
-        `<!-- parcel-plugin-change-file[i] -->`,
-        config.html[0],
+        `<!-- parcel-plugin-change-file[${i}] -->`,
+        config.html[i],
       );
     }
     fse.createFileSync(filePath);
