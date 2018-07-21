@@ -1,5 +1,4 @@
 const fse = require('fs-extra');
-const fs = require('fs');
 const path = require('path');
 const config = require(path.resolve(
   process.cwd(),
@@ -7,34 +6,43 @@ const config = require(path.resolve(
 ));
 
 function changeHtml(filePath, data = '') {
-  if (config && config.html) {
-    data = data.replace('<!-- parcel-plugin-change-file -->', html);
-    fs.writeFileSync(filePath, data);
+  if (config && config.html && config.html.length > 0) {
+    for (let i = 0, l = config.html.length; i < l; i++) {
+      data = data.replace(
+        `<!-- parcel-plugin-change-file[i] -->`,
+        config.html[0],
+      );
+    }
+    fse.createFileSync(filePath);
+    fse.writeFileSync(filePath, data);
+  } else {
+    console.log(
+      'parcel-plugin-change-file: please add html strings in parcel-plugin-change-file.js',
+    );
   }
 }
 
-function copys(outPath) {
-  if (config && config.copy && config.copy.lenght > 0) {
-    for (var i = 0, l = config.copyDirs.length; i < l; i++) {
-      const ele = config.copyDirs[i];
-      const targetPath = path.resolve(outPath, ele);
+function copyFiles(outPath) {
+  if (config && config.copy && config.copy.length > 0) {
+    for (var i = 0, l = config.copy.length; i < l; i++) {
+      const ele = config.copy[i];
+      const targetPath = path.resolve(process.cwd(), ele);
       fse.copySync(targetPath, outPath);
     }
+  } else {
+    console.log(
+      'parcel-plugin-change-file: please add copy files in parcel-plugin-change-file.js',
+    );
   }
 }
 
 module.exports = function(bundler) {
-  bunder.on('buildEnd', () => {
-    // changeHtml
-    const bundleDir = path.dirname(bundle.name);
+  bundler.on('bundled', bund => {
+    const bundleDir = path.dirname(bund.name);
     const htmlPath = path.resolve(bundleDir, 'index.html');
-    fs.readFileSync(htmlPath, (err, data) => {
-      if (err) throw err;
-      fs.unlinkSync(htmlPath, err => {
-        if (err) throw err;
-        changeHtml(htmlPath, data);
-      });
-    });
-    copys(bundleDir);
+    const data = fse.readFileSync(htmlPath, { encoding: 'utf-8' });
+    fse.removeSync(htmlPath);
+    changeHtml(htmlPath, data);
+    copyFiles(bundleDir);
   });
 };
