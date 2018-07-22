@@ -67,3 +67,12 @@ module.exports = {
 File tree like this:
 
 ![](.imgs/2018-07-22-00-27-46.png)
+
+
+## How did ignore parcel-plugin-change-file feature?
+
+Add `changeFile=false`
+
+```
+$ changeFile=false parcel index.html
+```
