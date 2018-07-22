@@ -1,5 +1,7 @@
 # :ambulance: parcel-plugin-change-file
 
+[中文文档](./README-cn.md)
+
 ## :bulb: How ignore parcel bundler file ?
 
 On Parcel build end, change index.html context, and copy static files in outDir
