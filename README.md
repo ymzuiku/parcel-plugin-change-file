@@ -1,7 +1,4 @@
-<div align="center">
-	<div style="font-size:70px; font-weight:200" >parcel-plugin-change-file</div>
-</div>
-
+# :ambulance: parcel-plugin-change-file
 
 ## :bulb: How ignore parcel bundler file ?
 
