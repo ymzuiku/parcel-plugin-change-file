@@ -30,11 +30,11 @@ The lodash.min.js jump to parcel bundler, this build end html:
 
 ## :lipstick: Feature2: Replace index.html
 
-Add `<!-- parcel-plugin-change-file[i] -->` in index.html
+Add `<!-- parcel-plugin-change-file-i -->` in index.html
 
 ```html
 <header>
-  <title><!-- parcel-plugin-change-file[0] --></title>
+  <title><!-- parcel-plugin-change-file-0 --></title>
 </header>
 ```
 

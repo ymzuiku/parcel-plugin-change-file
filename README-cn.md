@@ -41,10 +41,10 @@ module.exports = {
   html: [package.name],
 };
 ```
-在 `src/index.html` 中添加 `<!-- parcel-plugin-change-file[i] -->` , 其中 `i` 对应之前 `html` 对象中的数组下标, 这里我们只有一个, 所以用 `0`
+在 `src/index.html` 中添加 `<!-- parcel-plugin-change-file-i -->` , 其中 `i` 对应之前 `html` 对象中的数组下标, 这里我们只有一个, 所以用 `0`
 ```
 <header>
-  <title><!-- parcel-plugin-change-file[0] --></title>
+  <title><!-- parcel-plugin-change-file-0 --></title>
 </header>
 ```
 

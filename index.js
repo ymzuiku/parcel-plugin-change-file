@@ -8,14 +8,15 @@ const config = require(path.resolve(
 function changeHtml(filePath, data = '') {
   if (config && config.html && config.html.length > 0) {
     for (let i = 0, l = config.html.length; i <= l; i++) {
+      const exp = eval(`/<!-- parcel-plugin-change-file-${i} -->/g`)
       data = data.replace(
-        `<!-- parcel-plugin-change-file[${i}] -->`,
+        exp,
         config.html[i],
       );
     }
   }
-  data = data.replace('<!--[', '');
-  data = data.replace(']-->', '');
+  data = data.replace(/<!--\[/g, '');
+  data = data.replace(/\]-->/g, '');
   fse.createFileSync(filePath);
   fse.writeFileSync(filePath, data);
 }
