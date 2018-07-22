@@ -13,19 +13,11 @@ function changeHtml(filePath, data = '') {
         config.html[i],
       );
     }
-<<<<<<< HEAD
   }
   data = data.replace('<!--[', '');
   data = data.replace(']-->', '');
   fse.createFileSync(filePath);
   fse.writeFileSync(filePath, data);
-=======
-    fse.createFileSync(filePath);
-    fse.writeFileSync(filePath, data);
-  }
-  data = data.replace('<!--[', '');
-  data = data.replace(']-->', '');
->>>>>>> 3273e7786f84f474342150b92a9f89a2a43e02cc
 }
 
 function copyFiles(outPath) {
