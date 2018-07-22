@@ -151,5 +151,5 @@ _.map(_.range(500), v=>{
 $ parcel src/index.html
 ```
 
-### 最后, 如果这篇文章有帮到你, 欢迎 Star: [parcel-plugin-change-file](https://github.com/ymzuiku/parcel-plugin-change-file)
+#### 最后, 如果这篇文章有帮到你, 欢迎 Star: [parcel-plugin-change-file](https://github.com/ymzuiku/parcel-plugin-change-file)
 
