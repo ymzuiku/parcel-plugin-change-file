@@ -7,7 +7,7 @@ const config = require(path.resolve(
 
 function changeHtml(filePath, data = '') {
   if (config && config.html && config.html.length > 0) {
-    for (let i = 0, l = config.html.length; i <=l; i++) {
+    for (let i = 0, l = config.html.length; i <= l; i++) {
       data = data.replace(
         `<!-- parcel-plugin-change-file[${i}] -->`,
         config.html[i],
@@ -15,11 +15,9 @@ function changeHtml(filePath, data = '') {
     }
     fse.createFileSync(filePath);
     fse.writeFileSync(filePath, data);
-  } else {
-    console.log(
-      'parcel-plugin-change-file: please add html strings in parcel-plugin-change-file.js',
-    );
   }
+  data = data.replace('<!--[', '');
+  data = data.replace(']-->', '');
 }
 
 function copyFiles(outPath) {
@@ -29,10 +27,6 @@ function copyFiles(outPath) {
       const targetPath = path.resolve(process.cwd(), ele);
       fse.copySync(targetPath, outPath);
     }
-  } else {
-    console.log(
-      'parcel-plugin-change-file: please add copy files in parcel-plugin-change-file.js',
-    );
   }
 }
 
