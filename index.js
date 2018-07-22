@@ -37,10 +37,9 @@ module.exports = function(bundler) {
       console.log(bund)
       const bundleDir = path.dirname(bund.name);
       if (bund.type === 'html') {
-        const htmlPath = path.resolve(bundleDir, 'index.html');
-        const data = fse.readFileSync(htmlPath, { encoding: 'utf-8' });
-        fse.removeSync(htmlPath);
-        changeHtml(htmlPath, data);
+        const data = fse.readFileSync(bund.name, { encoding: 'utf-8' });
+        fse.removeSync(bund.name);
+        changeHtml(bund.name, data);
       }
       copyFiles(bundleDir);
     });
