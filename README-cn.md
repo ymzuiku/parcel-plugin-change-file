@@ -105,13 +105,13 @@ console.log(_.map)  //可以打印出 _.map 方法
 
 1. 创建一个预先需要打包的文件:
 
-目录:`项目根目录/dll/default.js`
-
 ```
+// dll/default.js
 // 假设这些库是自己编写的库, 需要在预编译, 并且在全局引用
 import _ from 'lodash';
 import Immutable from 'immutable';
 
+// 暴露到全局对象中
 window['_'] = _;
 window['Immutable'] = Immutable;
 
@@ -123,7 +123,9 @@ window['Immutable'] = Immutable;
 $ changeFile=false parcel build dll/default.js -d src/dll -o defalut.min.js
 ```
 
-3. 我们需要在html里引入 `src/dll/default.min.js`
+以上 `default.min.js` 已经创建好了, 接下来是在平时 Parcel 的项目中使用它
+
+3. 我们需要在 `src/index.html` 里引入 `src/dll/default.min.js`
 
 ```html
 <head>
@@ -139,13 +141,23 @@ module.exports = {
 };
 ```
 
-5. 大功告成,可以在项目里直接使用
+5. 大功告成,可以在项目里直接使用之前 `default.min.js` 中暴露在 `window` 下的全局对象
 
 ```
+// src/index.js
 _.map(_.range(500), v=>{
   console.log(`hello:${v}`);
 })
 ```
+
+6. 如果需要有提示, 需要编写 .d.ts 文件, 然后在项目中引入
+
+这一块知识点请查阅 [typescript Declaration Files 文档](http://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html)
+
+```
+/// <reference path="./your-edit.d.ts"/>
+```
+
 启动项目:
 ```
 $ parcel src/index.html
