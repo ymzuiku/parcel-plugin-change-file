@@ -34,10 +34,10 @@ function copyFiles(outPath) {
 module.exports = function(bundler) {
   if (process.env.changeFile != 'false') {
     bundler.on('bundled', bund => {
+      console.log(bund)
       const bundleDir = path.dirname(bund.name);
-      const htmlPath = path.resolve(bundleDir, 'index.html');
-      const ishaveHtml = fse.existsSync(htmlPath);
-      if (ishaveHtml) {
+      if (bund.type === 'html') {
+        const htmlPath = path.resolve(bundleDir, 'index.html');
         const data = fse.readFileSync(htmlPath, { encoding: 'utf-8' });
         fse.removeSync(htmlPath);
         changeHtml(htmlPath, data);
