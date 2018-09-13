@@ -16,7 +16,7 @@ if (package['parcel-plugin-change-file']) {
 let isCopyed = false;
 
 function changeHtml(filePath) {
-  let data = fse.readFileSync(filePath, { encoding: 'utf-8' });
+  let data = fs.readFileSync(filePath, { encoding: 'utf-8' });
   if (config && config.html && config.html.length > 0) {
     for (let i = 0, l = config.html.length; i <= l; i++) {
       const exp = eval(
@@ -28,9 +28,9 @@ function changeHtml(filePath) {
   data = data.replace(/<!--\|/g, '');
   data = data.replace(/\|-->/g, '');
   setTimeout(() => {
-    fse.removeSync(filePath);
-    fse.createFileSync(filePath);
-    fse.writeFileSync(filePath, data);
+    fs.removeSync(filePath);
+    fs.createFileSync(filePath);
+    fs.writeFileSync(filePath, data);
   }, config.timeout || 30);
 }
 
