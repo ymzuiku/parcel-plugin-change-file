@@ -27,6 +27,8 @@ function changeHtml(filePath) {
   }
   data = data.replace(/<!--\|/g, '');
   data = data.replace(/\|-->/g, '');
+  data = data.replace(/<!--\[/g, '');
+  data = data.replace(/\]-->/g, '');
   setTimeout(() => {
     fs.removeSync(filePath);
     fs.createFileSync(filePath);
