@@ -16,14 +16,14 @@ Parcel 有着开箱即用的特性, 为我们初始化工程省却了许多时�
 $ yarn add -D parcel-plugin-change-file
 ```
 
-在 index.html中添加 `<!--[ your-code ]-->` , 注意这里有两个中括号.
+在 index.html中添加 `<!--| your-code |-->` , 注意这里有两个中括号.
 
 ```html
 <body>
-  <!--[ <script src="lodash.min.js"></script> ]-->
+  <!--| <script src="lodash.min.js"></script> |-->
 </bodt>
 ```
-当项目编译结束之后, 该插件会把 `<!--[ your-code ]-->` 的注释内容打开,从而跳过 Parcel 的打包检测.
+当项目编译结束之后, 该插件会把 `<!--| your-code |-->` 的注释内容打开,从而跳过 Parcel 的打包检测.
 ```html
 <body>
   <script src="lodash.min.js"></script>
@@ -129,7 +129,7 @@ $ changeFile=false parcel build dll/default.js -d src/dll -o defalut.min.js
 
 ```html
 <head>
-    <!--[ <script src="default.min.js"></script> ]-->
+    <!--| <script src="default.min.js"></script> |-->
 </head>
 ```
 
