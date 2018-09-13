@@ -70,6 +70,17 @@ File tree like this:
 
 ![](.imgs/2018-07-22-00-27-46.png)
 
+## :beer: All config
+
+```js
+module.exports = {
+  timeout: 30, // setTimeout replace Html file
+  replaceName: 'parcel-plugin-change-file', // default html replaceName
+  html: ['hello'], // change string to html
+  copy: ['src/assets'], // copy files in outDir
+};
+```
+
 
 ## How did ignore parcel-plugin-change-file feature?
 
