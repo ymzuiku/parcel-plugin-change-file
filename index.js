@@ -1,5 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
+const configFilePath = path.resolve(process.cwd(), 'parcel-plugin-change-file.js');
 
 const package = require(path.resolve(process.cwd(), 'package.json'));
 let config;
