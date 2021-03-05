@@ -3,6 +3,8 @@ const path = require('path');
 
 const package = require(path.resolve(process.cwd(), 'package.json'));
 let config;
+const configFilePath = path.resolve(process.cwd(), 'parcel-plugin-change-file.js');
+
 if (package['parcel-plugin-change-file']) {
   config = package['parcel-plugin-change-file'];
 } else if (fs.existsSync(configFilePath)) {
